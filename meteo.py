@@ -18,6 +18,10 @@ DICT_COLUMN_NAMES.update( { 'hnuage'  + str(k)  : "Hauteur de base "         + s
 
 
 
+ID_STATIONS_DF = pd.read_csv("https://donneespubliques.meteofrance.fr/donnees_libres/Txt/Synop/postesSynop.csv", sep=';')
+DICT_ID_VERS_NOM = dict( zip( ID_STATIONS_DF["ID"] , ID_STATIONS_DF["Nom"] ) )
+
+
 def getDataOneMonth( YYYYMM ) :
   # I)2) Téléchargement
   df = pd.read_csv('https://donneespubliques.meteofrance.fr/donnees_libres/Txt/Synop/Archive/synop.'+str(YYYYMM)+".csv.gz",sep=';') 
