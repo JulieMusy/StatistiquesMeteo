@@ -1,5 +1,23 @@
 import pandas as pd
 
+
+
+# Conversion excel -> DataFrame de Pandas
+traduction_df = pd.read_excel( "https://raw.githubusercontent.com/JulieMusy/StatistiquesMeteo/main/doc_parametres_synop_168.xlsx" )
+
+# Création du dictionnaire en key : value   <-  "colonne Mnémonique" : "colonne Descriptif"
+DICT_COLUMN_NAMES = dict( zip( traduction_df["Mnémonique"] , traduction_df["Descriptif"] ))
+
+DICT_COLUMN_NAMES.update( { 'rr'      + str(k)  : "Précipitations dans les " + str(k) +" dernières heures" for k in [ 1 , 3 , 6 , 12 , 24 ] } )
+DICT_COLUMN_NAMES.update( { 'tn'      + str(k)  : "Température minimale sur "+ str(k) +" heures"           for k in [ 12 , 24 ] } )
+DICT_COLUMN_NAMES.update( { 'tx'      + str(k)  : "Température maximale sur "+ str(k) +" heures"           for k in [ 12 , 24 ] } ) 
+DICT_COLUMN_NAMES.update( { 'phenspe' + str(k)  : "Phénomène spécial "       + str(k)                      for k in [ 1 , 2 , 3 , 4 ] } ) 
+DICT_COLUMN_NAMES.update( { 'nnuage'  + str(k)  : "Nébulosité cche nuageuse "+ str(k)                      for k in [ 1 , 2 , 3 , 4 ] } ) 
+DICT_COLUMN_NAMES.update( { 'ctype'   + str(k)  : "Type nuage               "+ str(k)                      for k in [ 1 , 2 , 3 , 4 ] } ) 
+DICT_COLUMN_NAMES.update( { 'hnuage'  + str(k)  : "Hauteur de base "         + str(k)                      for k in [ 1 , 2 , 3 , 4 ] } ) 
+
+
+
 def getDataOneMonth( YYYYMM ) :
   # I)2) Téléchargement
   df = pd.read_csv('https://donneespubliques.meteofrance.fr/donnees_libres/Txt/Synop/Archive/synop.'+str(YYYYMM)+".csv.gz",sep=';') 
