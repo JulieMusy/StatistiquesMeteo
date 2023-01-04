@@ -129,3 +129,41 @@ def getDataPeriod( fromYYYYMM , toYYYYMM ) :
   return DFs_par_station 
 
 
+def getDFs( ) :
+
+  import gdown
+
+  # Localisation du fichier sur le net
+  googleID = '1AOyu3IpOwkSZOMXGDwhhKIcxCU_xZoXy'
+  url = 'https://drive.google.com/uc?id=' + googleID
+
+  # Donner un nom au fichier créé une fois téléchargé ici
+  nomFichier = 'DFs_de_1996_à_2022.pickle.lzma'
+
+  # Téléchargement du fichier sur un Drive Public ici dans notre session de travail
+  gdown.download( url , nomFichier , quiet=False )
+
+  with open("/content/DFs_de_1996_à_2022.pickle.lzma", "rb") as f:
+      compressed_pickle = f.read()
+
+  depressed_pickle = lzma.decompress( compressed_pickle )
+  DFs = pickle.loads( depressed_pickle )  # turn bytes object back into data
+  
+  print( "Les données couvrent l'intégralité de 96 à 22" )
+  
+  return DFs
+
+def downloadNewDFs( fromYYYYMM , toYYYYMM ) :
+  
+  DFs = getDataPeriod( fromYYYYMM , toYYYYMM )
+  import lzma
+  import pickle
+
+  # Sérialisation & Compression
+  with lzma.open("DFs_from"+fromYYYYMM+"_to"+toYYYYMM+".pickle.lzma", "wb") as fichier:
+      pickle.dump(DFs, fichier)
+
+  # Téléchargement
+  from google.colab import files
+  files.download("DFs_from"+fromYYYYMM+"_to"+toYYYYMM+".pickle.lzma") 
+  
