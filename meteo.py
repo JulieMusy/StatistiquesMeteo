@@ -132,6 +132,8 @@ def getDataPeriod( fromYYYYMM , toYYYYMM ) :
 def getDFs( ) :
 
   import gdown
+  import lzma
+  import pickle
 
   # Localisation du fichier sur le net
   googleID = '1AOyu3IpOwkSZOMXGDwhhKIcxCU_xZoXy'
