@@ -136,18 +136,18 @@ def getDFs( ) :
   import pickle
 
   # Localisation du fichier sur le net
-  #googleID = '1AOyu3IpOwkSZOMXGDwhhKIcxCU_xZoXy'
-  googleID = '1eOmy1ISwnZFk5q516f_BoKDMmf-WR_FZ'
+  googleID = '1AOyu3IpOwkSZOMXGDwhhKIcxCU_xZoXy'
+  ###googleID = '1eOmy1ISwnZFk5q516f_BoKDMmf-WR_FZ'
   url = 'https://drive.google.com/uc?id=' + googleID
 
   # Donner un nom au fichier créé une fois téléchargé ici
-  #nomFichier = 'DFs_de_1996_à_2022.pickle.lzma'
-  nomFichier = 'DFs_from199601_to202312.pickle.lzma'
+  nomFichier = 'DFs_de_1996_à_2022.pickle.lzma'
+  ###nomFichier = 'DFs_from199601_to202312.pickle.lzma'
   # Téléchargement du fichier sur un Drive Public ici dans notre session de travail
   gdown.download( url , nomFichier , quiet=False )
 
-  #with open("/content/DFs_de_1996_à_2022.pickle.lzma", "rb") as f:
-  with open("/content/"+nomFichier, "rb") as f:
+  with open("/content/DFs_de_1996_à_2022.pickle.lzma", "rb") as f:
+  ###with open("/content/"+nomFichier, "rb") as f:
       compressed_pickle = f.read()
 
   depressed_pickle = lzma.decompress( compressed_pickle )
