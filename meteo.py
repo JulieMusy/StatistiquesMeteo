@@ -141,8 +141,8 @@ def getDFs( ) :
   url = 'https://drive.google.com/uc?id=' + googleID
 
   # Donner un nom au fichier créé une fois téléchargé ici
-  nomFichier = 'DFs_de_1996_à_2022.pickle.lzma'
-
+  #nomFichier = 'DFs_de_1996_à_2022.pickle.lzma'
+  nomFichier = 'DFs_from199601_to202312.pickle.lzma'
   # Téléchargement du fichier sur un Drive Public ici dans notre session de travail
   gdown.download( url , nomFichier , quiet=False )
 
