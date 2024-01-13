@@ -146,7 +146,8 @@ def getDFs( ) :
   # Téléchargement du fichier sur un Drive Public ici dans notre session de travail
   gdown.download( url , nomFichier , quiet=False )
 
-  with open("/content/DFs_de_1996_à_2022.pickle.lzma", "rb") as f:
+  #with open("/content/DFs_de_1996_à_2022.pickle.lzma", "rb") as f:
+  with open("/content/"+nomFichier, "rb") as f:
       compressed_pickle = f.read()
 
   depressed_pickle = lzma.decompress( compressed_pickle )
