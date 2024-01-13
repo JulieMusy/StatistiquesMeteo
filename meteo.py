@@ -25,7 +25,7 @@ DICT_ID_VERS_NOM = dict( zip( ID_STATIONS_DF["ID"] , ID_STATIONS_DF["Nom"] ) )
 def getDataOneMonth( YYYYMM ) :
   # I)2) Téléchargement
   df = pd.read_csv('https://donneespubliques.meteofrance.fr/donnees_libres/Txt/Synop/Archive/synop.'+str(YYYYMM)+".csv.gz",sep=';') 
-
+  print(YYYYMM)
   # II)2) Application du dictionnaire sur le nom des colonnes
   df = df.rename( columns = DICT_COLUMN_NAMES )    
 
