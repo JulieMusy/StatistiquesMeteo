@@ -170,6 +170,6 @@ def downloadNewDFs( fromYYYYMM , toYYYYMM ) :
       pickle.dump(DFs, fichier)
 
   # Téléchargement
-  from google.colab import files
-  files.download("DFs_from"+fromYYYYMM+"_to"+toYYYYMM+".pickle.lzma") 
+  # from google.colab import files
+  # files.download("DFs_from"+fromYYYYMM+"_to"+toYYYYMM+".pickle.lzma") 
   
