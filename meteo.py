@@ -148,14 +148,14 @@ def getDFs( ) :
   # Téléchargement du fichier sur un Drive Public ici dans notre session de travail
   gdown.download( url , nomFichier , quiet=False )
 
-  with open("/content/DFs_de_1996_à_2022.pickle.lzma", "rb") as f:
+  with open("/content/"+nomFichier, "rb") as f:
   ###with open("/content/"+nomFichier, "rb") as f:
       compressed_pickle = f.read()
 
   depressed_pickle = lzma.decompress( compressed_pickle )
   DFs = pickle.loads( depressed_pickle )  # turn bytes object back into data
   
-  print( "Les données couvrent l'intégralité de 96 à 22" )
+  print( "Les données couvrent l'intégralité de 96 à 24" )
   
   return DFs
 
