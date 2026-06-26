@@ -19,7 +19,7 @@ DICT_COLUMN_NAMES.update( { 'hnuage'  + str(k)  : "Hauteur de base "         + s
 
 
 # ID_STATIONS_DF = pd.read_csv("https://donneespubliques.meteofrance.fr/donnees_libres/Txt/Synop/postesSynop.csv", sep=';')
-ID_STATIONS_DF = pd.read_csv("https://github.com/JulieMusy/StatistiquesMeteo/blob/main/postesSynop.csv", sep=';')
+ID_STATIONS_DF = ID_STATIONS_DF = pd.read_csv("https://raw.githubusercontent.com/JulieMusy/StatistiquesMeteo/refs/heads/main/postesSynop.csv", sep=';')
 DICT_ID_VERS_NOM = dict( zip( ID_STATIONS_DF["ID"] , ID_STATIONS_DF["Nom"] ) )
 
 
